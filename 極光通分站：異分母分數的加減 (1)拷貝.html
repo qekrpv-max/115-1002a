@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>極光通分站｜異分母分數的加減</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;900&display=swap">
+<style>
+:root{--bg:#eaf5f9;--pn:#fff;--ink:#12303f;--mut:#56717e;--ok:#0f9a6c;--ac:#2a7fb8;--wn:#d9822b;--bad:#c2415a;--ln:#c9dde6;--sh:#dbeef5;--hd:#0d2a3b;--hdi:#e9fbff;--au:#45e0a4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1a24;--pn:#12303f;--ink:#e6f3f7;--mut:#9ab6c2;--ok:#45e0a4;--ac:#6cb8ea;--wn:#ffb056;--bad:#ff8aa3;--ln:#2a4a5a;--sh:#1b4254}}
+:root[data-theme="dark"]{--bg:#0a1a24;--pn:#12303f;--ink:#e6f3f7;--mut:#9ab6c2;--ok:#45e0a4;--ac:#6cb8ea;--wn:#ffb056;--bad:#ff8aa3;--ln:#2a4a5a;--sh:#1b4254}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 16px/1.7 'Noto Sans TC',system-ui,'PingFang TC','Microsoft JhengHei',sans-serif}
+header{background:linear-gradient(120deg,var(--hd),#14506a 60%,#1b7a73);color:var(--hdi);padding:22px 16px 0}
+.w{max-width:860px;margin:0 auto}
+h1{margin:0;font-weight:900;font-size:clamp(24px,5vw,34px);letter-spacing:.04em}
+header p{margin:2px 0 14px;opacity:.85}
+nav{display:flex;gap:4px;overflow-x:auto}
+nav button{flex:1;min-width:84px;border:0;background:transparent;color:var(--hdi);padding:10px 8px;font:inherit;font-weight:700;cursor:pointer;border-radius:10px 10px 0 0;opacity:.75}
+nav button.on{background:var(--bg);color:var(--ink);opacity:1}
+main{max-width:860px;margin:0 auto;padding:16px}
+section{display:none}section.on{display:block}
+.card{background:var(--pn);border:1px solid var(--ln);border-radius:14px;padding:16px;margin:12px 0}
+h2{font-size:20px;margin:6px 0;font-weight:900}
+.coach{background:var(--sh);border-left:5px solid var(--au);border-radius:10px;padding:10px 14px;margin:12px 0}
+.chip{display:inline-block;background:var(--hd);color:var(--au);border-radius:99px;padding:0 10px;font-size:13px;font-weight:700;margin-right:8px}
+.btn,.opt,.pre{font:inherit;font-weight:700;border:2px solid var(--ac);background:var(--pn);color:var(--ac);border-radius:10px;padding:8px 14px;cursor:pointer;margin:4px 4px 4px 0}
+.btn{background:var(--ac);color:#fff}.opt.sel,.pre.on{background:var(--ac);color:#fff}
+button:focus-visible,input:focus-visible{outline:3px solid var(--wn);outline-offset:2px}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 3px;line-height:1.15;font-size:.92em}
+.fr i{font-style:normal;padding:0 4px}.fr i:first-child{border-bottom:2px solid currentColor}
+.row{display:flex;align-items:center;gap:10px;margin:8px 0}
+.lab{min-width:56px;text-align:center}.st{min-width:120px;font-weight:700}
+.bar{display:flex;flex:1;height:38px;border:2px solid var(--ink);border-radius:6px;overflow:hidden}
+.bar b{flex:1;border-left:1px solid var(--mut);background:var(--pn)}.bar b:first-child{border-left:0}
+.bar b.on{background:var(--au)}.bar b.half{background:repeating-linear-gradient(45deg,var(--wn) 0 4px,var(--pn) 4px 8px)}
+.pp{font-size:19px;margin:4px 0 10px}
+.fb{min-height:26px;margin:8px 0;font-weight:700}.fb.ok{color:var(--ok)}.fb.no{color:var(--bad)}.fb.hi{color:var(--wn)}
+.fi{display:inline-flex;flex-direction:column;align-items:center;margin:0 4px;vertical-align:middle}
+input.n{width:56px;text-align:center;font:inherit;font-weight:700;padding:4px;border:2px solid var(--ln);border-radius:8px;background:var(--pn);color:var(--ink)}
+.fi hr{width:100%;margin:2px 0;border:0;border-top:2px solid var(--ink)}
+.prog{color:var(--mut);font-weight:700}
+.meter{height:14px;background:var(--sh);border-radius:99px;overflow:hidden}.meter div{height:100%;background:var(--ok)}
+table{border-collapse:collapse;width:100%;font-size:15px}td,th{border:1px solid var(--ln);padding:8px;text-align:left;vertical-align:top}th{background:var(--sh)}
+.flow{display:flex;gap:6px;flex-wrap:wrap}.flow span{background:var(--sh);border-radius:8px;padding:2px 10px;font-size:14px}
+@media(max-width:560px){.st{min-width:90px;font-size:14px}.row{flex-wrap:wrap}}
+@media(prefers-reduced-motion:no-preference){.bar b{transition:background .25s}}
+</style>
+</head>
+<body>
+<header><div class="w">
+<h1>極光通分站</h1>
+<p>跟著格陵蘭探險隊，學會異分母分數的加減（五年級上・第 6 單元）</p>
+<nav id="nav"><button class="on" data-t="t1">1 探索概念</button><button data-t="t2">2 互動遊戲</button><button data-t="t3">3 學習評量</button><button data-t="t4">4 提問手冊</button></nav>
+</div></header>
+<main>
+<section id="t1" class="on">
+<div class="card"><h2>任務：惠文吃了 1/3 個披薩，季芸吃了 1/4 個，共吃多少？</h2>
+<div id="pres"></div>
+<p>把每個披薩平分成 <button class="opt" id="mn">－</button> <b id="nv" style="font-size:22px">1</b> 等份 <button class="opt" id="pl">＋</button>，看看兩個分數能不能剛好塗滿。</p>
+<div id="bars"></div><div id="eq" class="fb"></div></div>
+<div id="coach1"></div><button class="btn" id="hintb">給我提示</button><div id="hint1" class="fb hi"></div>
+<div class="card" id="emo1"></div>
+</section>
+<section id="t2">
+<div class="card"><h2>選一個遊戲</h2>
+<button class="btn" data-g="A">通分船長：選最小共同分母</button>
+<button class="btn" data-g="B">臨界點：比 1/2 大還是小</button>
+<button class="btn" data-g="C">錯誤偵探：抓出算錯的那一行</button></div>
+<div id="gbox"></div>
+</section>
+<section id="t3">
+<div class="card"><h2>學習評量（9 題）</h2><p>答錯會先給提示，可以再試一次。評量的目的是找到下一步怎麼學，不是只看分數。</p>
+<div id="emo0"></div><button class="btn" id="startA">開始評量</button></div>
+<div id="abox"></div>
+</section>
+<section id="t4">
+<div class="card"><h2>歷程導向的評量（Assessment for Learning）</h2>
+<div class="flow"><span>診斷：探索時的提問</span><span>形成：分級提示＋重試</span><span>總結：能力報告＋下一步</span></div></div>
+<div class="card"><h2>六種數學提問在本站的位置</h2>
+<table><tr><th>提問</th><th>怎麼問</th><th>出現在哪裡</th></tr>
+<tr><td>極端反差</td><td>堅持一個和事實極端不符的說法（例如 1/3+1/4=2/7），請學生駁倒</td><td>探索：一開始；評量第 6 題</td></tr>
+<tr><td>臨界點</td><td>問差一點點算不算，讓學生在「剛好／差一點」之間判斷</td><td>探索：切不開時；遊戲 B；評量第 1、9 題</td></tr>
+<tr><td>網絡式</td><td>從一個答案連到倍數、因數、其他份數與其他題目</td><td>探索：完成後；遊戲 A；評量第 8 題</td></tr>
+<tr><td>知數能學</td><td>觀察數、量、圖形，再連結、推理、說明</td><td>探索：長條圖；評量第 5、7 題</td></tr>
+<tr><td>情緒分享</td><td>請學生說出感受，提高投入與行動力</td><td>探索、評量開始與結束</td></tr>
+<tr><td>語言演化</td><td>把「共、比…多、剩下」轉成 + 或 −</td><td>遊戲 C；評量第 4、5、7 題</td></tr></table></div>
+<div class="card"><h2>評量向度</h2><p>數學技能（通分、約分、帶分數計算）、數學解題（文字題與線段圖）、多元表徵（圖與算式互換）、數學關係（估算與比較）。</p></div>
+</section>
+</main>
+<script>
+const gcd=(a,b)=>b?gcd(b,a%b):a,lcm=(a,b)=>a/gcd(a,b)*b;
+const F=s=>String(s).replace(/\{(\d+)\/(\d+)\}/g,'<span class=fr><i>$1</i><i>$2</i></span>');
+const $=id=>document.getElementById(id);
+const shuf=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button,section').forEach(e=>e.classList.remove('on'));b.classList.add('on');$(b.dataset.t).classList.add('on')});
+const coachH=q=>q?`<div class="coach"><span class="chip">${q[0]}</span>${F(q[1])}</div>`:'';
+function emo(el,after){el.innerHTML=`<p><b>${after||'現在的心情像哪一個？'}</b></p>`+['😵 卡住了','🤔 有點困惑','🙂 有信心','🤩 想挑戰'].map((t,i)=>`<button class="opt" data-i="${i}">${t}</button>`).join('')+'<div class="fb hi" id="em"></div>';
+const m=['卡住很正常，說出哪一步卡住，就是進步的開始。','困惑代表你在思考。試著用圖把它畫出來。','很好！試著教同學怎麼做。','太棒了！去玩「錯誤偵探」挑戰一下。'];
+el.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{el.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');el.querySelector('#em').textContent=m[b.dataset.i]})}
+/* ---------- 探索 ---------- */
+const P=[[1,3,1,4],[2,5,1,4],[1,2,2,5],[3,4,5,6]];let pi=0,n=1;
+$('pres').innerHTML=P.map((p,i)=>`<button class="pre${i?'':' on'}" data-i="${i}">${F(`{${p[0]}/${p[1]}}`)}＋${F(`{${p[2]}/${p[3]}}`)}</button>`).join('');
+document.querySelectorAll('.pre').forEach(b=>b.onclick=()=>{pi=+b.dataset.i;n=1;document.querySelectorAll('.pre').forEach(x=>x.classList.toggle('on',x===b));draw()});
+$('mn').onclick=()=>{n=Math.max(1,n-1);draw()};$('pl').onclick=()=>{n=Math.min(36,n+1);draw()};
+function bar(a,b){const k=n*a/b,ok=Number.isInteger(k);let h=`<div class=row><span class=lab>${F(`{${a}/${b}}`)}</span><div class=bar>`;for(let i=0;i<n;i++)h+=`<b class="${i<Math.floor(k)?'on':(!ok&&i==Math.floor(k)?'half':'')}"></b>`;return[h+`</div><span class=st>${ok?'＝ '+F(`{${k}/${n}}`):'✗ 切不開'}</span></div>`,ok,k]}
+function draw(){const[a,b,c,d]=P[pi];$('nv').textContent=n;const[h1,o1,k1]=bar(a,b),[h2,o2,k2]=bar(c,d);$('bars').innerHTML=h1+h2;const L=lcm(b,d);let e='',q;
+if(o1&&o2){const s=k1+k2,g=gcd(s,n);e=`${F(`{${k1}/${n}}`)}＋${F(`{${k2}/${n}}`)}＝${F(`{${s}/${n}}`)}`+(g>1?`＝${F(`{${s/g}/${n/g}}`)}`:'');
+q=n==L?['網絡式',`${n} 和 ${b}、${d} 有什麼關係？再找一個也能剛好塗滿的份數，最小的是哪個？它叫什麼名字？想想看「共吃了」要用什麼符號。`]:['知數能學',`這個份數也算得出答案，但比 ${L} 大。看看分子、分母，還能怎麼讓它變簡單？`]}
+else if(n==1)q=['極端反差',`我堅持 ${`{${a}/${b}}`}＋${`{${c}/${d}}`}＝${`{${a+c}/${b+d}}`}：分子加分子，分母加分母，多簡單！你要怎麼說服我？（想不出來可以按「給我提示」）`];
+else q=['臨界點',`平分成 ${n} 份：${o1?'第一條剛好':'第一條差一點點，切不剛好'}；${o2?'第二條剛好':'第二條差一點點，切不剛好'}。「差一點點」可以當作「剛好」來加嗎？`];
+$('eq').innerHTML=e;$('coach1').innerHTML=coachH(q);$('hint1').innerHTML=''}
+$('hintb').onclick=()=>{const[a,b,c,d]=P[pi],x=a*d>=c*b?[a,b]:[c,d],y=x[0]==a?[c,d]:[a,b];$('hint1').innerHTML=F(`{${a+c}/${b+d}} 比其中一個 {${x[0]}/${x[1]}} 還小。加上 {${y[0]}/${y[1]}} 之後，結果反而變少了，合理嗎？所以要先讓每一份一樣大。`)};
+emo($('emo1'),'探索完了，你的感覺是？');draw();
+/* ---------- 題目引擎 ---------- */
+function run(el,items,o){let i=0,pts=0,max=0,log={};
+function show(){if(i>=items.length)return fin();const it=items[i];let tries=0,sel=null,opv=null,phase='c';
+let inp='';if(it.t=='mc')inp=it.o.map((x,k)=>`<button class="opt" data-k="${k}">${F(x)}</button>`).join('');
+else inp=(it.op?`<div>${['＋','－'].map(s=>`<button class="opt op" data-s="${s}">${s}</button>`).join('')} <span class="prog">先判斷要加還是減</span></div>`:'')+`<p>答案：<input class="n" id="w" inputmode="numeric" aria-label="整數" placeholder="整數"> <span class="fi"><input class="n" id="nu" inputmode="numeric" aria-label="分子" placeholder="分子"><hr><input class="n" id="de" inputmode="numeric" aria-label="分母" placeholder="分母"></span></p>`;
+el.innerHTML=`<div class="prog">第 ${i+1} / ${items.length} 題</div>`+coachH(it.q)+`<div class="card"><p class="pp">${F(it.p)}</p>${inp}<div id="fb" class="fb"></div><button class="btn" id="go">檢查</button></div>`;
+const fb=$('fb'),go=$('go');
+el.querySelectorAll('.opt:not(.op)').forEach(b=>b.onclick=()=>{el.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');sel=+b.dataset.k});
+el.querySelectorAll('.op').forEach(b=>b.onclick=()=>{el.querySelectorAll('.op').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');opv=b.dataset.s});
+function end(p){pts+=p;max+=2;if(it.d){log[it.d]=log[it.d]||[0,0];log[it.d][0]+=p;log[it.d][1]+=2}phase='n';go.textContent=i+1<items.length?'下一題':'看結果'}
+go.onclick=()=>{if(phase=='n'){i++;return show()}
+let ok=false,hint=it.h;
+if(it.t=='mc'){if(sel==null){fb.className='fb hi';fb.textContent='先選一個答案。';return}ok=sel==it.a}
+else{if(it.op&&!opv){fb.className='fb hi';fb.textContent='先選加或減。';return}
+const W=+$('w').value||0,N=+$('nu').value||0,D=+$('de').value||1,A=it.a,vd=D*A[2];ok=(W*D+N)*A[2]==(A[0]*A[2]+A[1])*D;
+if(it.op&&opv!=it.op){ok=false;hint=it.oh}
+else if(!ok&&it.nv&&(W*D+N)*it.nv[1]==it.nv[0]*D)hint='你是不是把分子加分子、分母加分母了？每一份大小不同，不能這樣加。'}
+if(ok){fb.className='fb ok';fb.innerHTML='答對了！'+F(it.e);end(tries?1:2)}
+else if(!tries){tries=1;fb.className='fb hi';fb.innerHTML='提示：'+F(hint||'再想一想。')}
+else{fb.className='fb no';fb.innerHTML='解法：'+F(it.e);end(0)}};}
+function fin(){const pc=Math.round(pts/max*100);let h=`<div class="card"><h2>完成！得分 ${pts} / ${max}</h2><div class="meter"><div style="width:${pc}%"></div></div>`;
+if(o.rec){const nm={'技能':'數學技能','解題':'數學解題','表徵':'多元表徵','關係':'數學關係'};let low=null,lp=2;h+='<p><b>能力向度</b></p>';
+for(const k in nm){const v=log[k];if(!v)continue;const r=v[0]/v[1];if(r<lp){lp=r;low=k}h+=`<div class="row"><span style="min-width:90px">${nm[k]}</span><div class="meter" style="flex:1"><div style="width:${Math.round(r*100)}%"></div></div><b>${Math.round(r*100)}%</b></div>`}
+const adv={'技能':'回到「探索概念」，用長條圖再練習通分和借 1。','解題':'到「錯誤偵探」練習把「共、比…多」翻成符號，並畫線段圖。','表徵':'回到「探索概念」，自己找出最小的等份數。','關係':'玩「臨界點」遊戲，多做估算。'};
+h+=`<div class="coach"><span class="chip">下一步</span>${lp>=1?'每個向度都很穩！試著自己出一題給同學。':adv[low]}</div>`}
+else h+='<p>想再玩一次，或換一個遊戲也可以。</p>';
+el.innerHTML=h+'<div id="emx"></div></div>';emo($('emx'),'這次的感覺是？')}
+show()}
+/* ---------- 評量 ---------- */
+emo($('emo0'),'開始前，你現在的心情？');
+const AS=[
+{d:'技能',t:'f',p:'{1/2}＋{2/5}＝？',a:[0,9,10],nv:[3,7],q:['臨界點','{2/5} 比 {1/2} 差一點點。加起來會比 1 大還是小？先估再算。'],h:'2 和 5 的最小公倍數是多少？每一份要平分成幾等份？',e:'{5/10}＋{4/10}＝{9/10}，也比 1 小，估算吻合。'},
+{d:'技能',t:'f',p:'{7/12}－{1/6}＝？',a:[0,5,12],nv:[6,6],h:'12 和 6 的關係是什麼？哪一個可以直接當共同分母？',e:'{7/12}－{2/12}＝{5/12}'},
+{d:'技能',t:'f',p:'{25/20}＋{21/12}＝？（可先約分）',a:[3,0,1],h:'{25/20} 和 {21/12} 能不能先約分？約分後分母一樣嗎？',e:'{5/4}＋{7/4}＝{12/4}＝3'},
+{d:'解題',t:'f',op:'＋',p:'文漢吃了 {3/4} 條蛋糕，珍純吃了 {5/6} 條，兩人共吃了幾條？',a:[0,19,12],q:['語言演化','「兩人共吃了」是哪個字眼在決定運算？把它翻成數學符號。'],oh:'「共」是把兩份合起來。',h:'4 和 6 的最小公倍數是 12。',e:'{9/12}＋{10/12}＝{19/12}＝1{7/12}'},
+{d:'解題',t:'f',op:'－',p:'尚恩跑了 {7/5} 公里，智英跑了 {5/4} 公里，智英比尚恩少跑幾公里？',a:[0,3,20],q:['知數能學','先畫線段圖，誰比較長？差是哪一段？'],oh:'「少跑」是比較兩人的差，用大的減小的。',h:'5 和 4 的最小公倍數是 20。',e:'{28/20}－{25/20}＝{3/20}'},
+{d:'技能',t:'f',p:'4{1/6}－2{5/8}＝？',a:[1,13,24],q:['極端反差','我說 4－2＝2，然後 {5/8}－{1/6}＝{11/24}，所以答案是 2{11/24}。我很確定，對嗎？'],h:'通分後，{4/24} 夠不夠減 {15/24}？不夠要向整數借 1。',e:'4{4/24}－2{15/24}＝3{28/24}－2{15/24}＝1{13/24}'},
+{d:'解題',t:'f',op:'－',p:'舊城餅鋪原有檸檬蛋糕 8{3/4} 盒，賣了一些後還剩 1{5/6} 盒，賣出幾盒？',a:[6,11,12],q:['知數能學','原有＝賣出＋剩下。哪一個數是全部？哪兩個是部分？'],oh:'全部拿掉剩下的，就是賣出的。',h:'可以先把兩個帶分數換成假分數，或借 1 再減。',e:'8{9/12}－1{10/12}＝7{21/12}－1{10/12}＝6{11/12}'},
+{d:'表徵',t:'mc',p:'畫圖表示 {2/5}－{1/4}，每盒平分成幾等份，兩個分數才都能剛好表示？（選最小的）',o:['9','20','10','4'],a:1,q:['網絡式','40 等份也可以，為什麼課本選 20？和 5、4 有什麼關係？'],h:'找 5 和 4 的最小公倍數。',e:'5 和 4 的最小公倍數是 20，所以每盒平分成 20 等份。'},
+{d:'關係',t:'mc',p:'{1/3}＋{1/4} 和 {1/2} 比一比，哪個正確？',o:['比 {1/2} 大','剛好 {1/2}','比 {1/2} 小','無法比較'],a:0,q:['臨界點','{1/3}＋{1/4} 很接近 {1/2}，差一點點，到底有沒有超過？'],h:'把 {1/2} 也通分成 12 等份。',e:'{4/12}＋{3/12}＝{7/12}，而 {1/2}＝{6/12}，所以大一點點。'}];
+$('startA').onclick=()=>{$('startA').textContent='重新開始';run($('abox'),AS,{rec:1})};
+/* ---------- 遊戲 ---------- */
+function gameA(){return shuf([[4,6],[5,4],[6,10],[8,12],[9,6],[12,18]]).map(([b,d])=>{const L=lcm(b,d);let c=[...new Set([L,L*2,b*d,b+d,L*3])];c=c.filter(x=>x!=L).slice(0,3);c.push(L);c=shuf(c);return{t:'mc',p:`{1/${b}} 和 {1/${d}} 要通分，最小的共同分母是？`,o:c.map(String),a:c.indexOf(L),q:['網絡式',`${b*d>L?b*d:L*2} 也能通分，為什麼我們選 ${L}？${L} 和 ${b}、${d} 有什麼關係？`],h:`列出 ${b} 的倍數和 ${d} 的倍數，找第一個相同的。`,e:`${b} 和 ${d} 的最小公倍數是 ${L}。`}})}
+function gameB(){return shuf([[1,3,1,1,6],[2,5,1,1,4],[1,5,1,1,4],[3,4,1,1,2],[5,6,-1,1,3],[7,12,-1,1,6]]).map(([a,b,s,c,d])=>{const nu=a*d+s*c*b,de=b*d,cmp=nu*2-de,k=cmp>0?0:cmp==0?1:2,g=gcd(nu,de);return{t:'mc',p:`不用算到最後，估一估：{${a}/${b}} ${s>0?'＋':'－'} {${c}/${d}} 和 {1/2} 比較？`,o:['大於 {1/2}','剛好 {1/2}','小於 {1/2}'],a:k,q:['臨界點','如果差一點點，差在哪一邊？把 {1/2} 通分成同分母比比看。'],h:'把兩個分數通分後，再把 {1/2} 也換成同分母。',e:`答案是 {${nu/g}/${de/g}}，和 {1/2} 比是${['大','剛好','小'][k]}。`}})}
+function gameC(){return[
+{t:'mc',p:'{2/5}＋{3/10}<br>第 1 行：＝{5/15}<br>第 2 行：＝{1/3}<br>哪一行開始錯了？',o:['第 1 行','第 2 行'],a:0,q:['語言演化','這行的算法在說「分母可以直接相加」，這句話成立嗎？'],h:'{5/15} 比 {2/5} 還小，加了東西怎麼會變小？',e:'應通分成 {4/10}＋{3/10}＝{7/10}。'},
+{t:'mc',p:'{7/12}－{1/6}<br>第 1 行：＝{7/12}－{2/12}<br>第 2 行：＝{5/24}<br>哪一行開始錯了？',o:['第 1 行','第 2 行'],a:1,q:['語言演化','通分之後，「每一份一樣大」。那分母還需要再算嗎？'],h:'分母代表每一份多大，通分後份數大小已經一樣。',e:'同分母相減，分母不變：{5/12}。'},
+{t:'mc',p:'4{1/6}－2{5/8}<br>第 1 行：＝4{4/24}－2{15/24}<br>第 2 行：＝2{11/24}（15－4＝11）<br>哪一行開始錯了？',o:['第 1 行','第 2 行'],a:1,q:['語言演化','「不夠減」用白話怎麼說？為什麼不能把大的減小的顛倒？'],h:'{4/24} 夠減 {15/24} 嗎？',e:'不夠減，要借 1：3{28/24}－2{15/24}＝1{13/24}。'}]}
+document.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>run($('gbox'),{A:gameA,B:gameB,C:gameC}[b.dataset.g](),{rec:0}));
+</script>
+</body>
+</html>
